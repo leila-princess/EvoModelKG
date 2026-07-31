@@ -1,0 +1,10 @@
+httpx
+langchain-openai
+loguru
+openpyxl
+pandas
+pydantic
+python-dotenv
+matplotlib
+numpy
+neo4j

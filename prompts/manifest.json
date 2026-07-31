@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "description": "Self-evolution workflow configuration. Agents may edit workflow and prompt mappings.",
+  "workflow": "unified",
+  "attribute_field_groups": [
+    [
+      "model_id",
+      "model_name",
+      "model_sub_types",
+      "author",
+      "version",
+      "library_name",
+      "pipeline_tag",
+      "license",
+      "license_name",
+      "license_link",
+      "base_model",
+      "languages",
+      "auto_model",
+      "architecture",
+      "config_model_type",
+      "num_parameters",
+      "model_size",
+      "model_file_formats",
+      "context_length",
+      "max_position_embeddings",
+      "vocab_size",
+      "hidden_size",
+      "num_hidden_layers",
+      "num_attention_heads",
+      "uses_safetensors",
+      "training_datasets",
+      "evaluation_datasets",
+      "code_repository",
+      "demo_url",
+      "direct_use",
+      "out_of_scope_use",
+      "training_time",
+      "inference_latency",
+      "compute_infrastructure",
+      "co2_emission",
+      "risks_and_biases",
+      "cited_papers",
+      "citation_bibtex",
+      "created_at"
+    ]
+  ],
+  "prompt_files": {
+    "unified_extract": "attribute_extract.txt"
+  },
+  "notes": "Current workflow is attribute-only. Self-evolution feedback should focus on attribute accuracy, completeness, and normalization. Updated normalization rules for model_sub_types, model_name, architecture, training_datasets, library_name, uses_safetensors, config_model_type, pipeline_tag, cited_papers, license_link.",
+  "updated_at": "2026-06-26T09:17:00.823238+00:00"
+}

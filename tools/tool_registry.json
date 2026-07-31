@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "tools": [
+    {
+      "name": "conservative_readme_preprocess",
+      "filename": "conservative_readme_preprocess.py",
+      "stage": "preprocess_readme",
+      "enabled": true,
+      "description": "Conservatively removes HTML comments, unrelated badge-only lines, and excess blank lines while preserving all tables, headings, links, code, license, citation, model, dataset, architecture, training, evaluation, parameter, and file-format evidence.",
+      "purpose": "Replace the two overlapping README cleaners with one low-risk preprocessing pass.",
+      "evidence_cases": ["TheBloke/MythoMax-L2-13B-GGUF", "dragonkue/BGE-m3-ko"],
+      "expected_behavior": "Remove only high-confidence presentation noise; keep evidence-bearing badges and all substantive README lines.",
+      "safety_constraints": "Must not remove tables, headings, code blocks, ordinary links, license/citation badges, or lines containing extraction-relevant keywords.",
+      "validation_criteria": "Comments and unrelated badge-only lines are removed; license badges, tables, code, dataset text, and citation text remain.",
+      "allow_empty_output": false
+    },
+    {
+      "name": "normalize_attributes",
+      "filename": "normalize_attributes.py",
+      "stage": "postprocess_extraction",
+      "enabled": true,
+      "description": "Deterministic, evidence-safe field normalization for model identity, parameter units, config types, file formats, dataset identifiers, language codes, arXiv identifiers, safetensors evidence, and generic AutoModel architecture values.",
+      "purpose": "Restore low-risk normalization gains while keeping placeholder/evidence cleanup in attribute_evidence_guard and avoiding guessed base-model mappings.",
+      "evidence_cases": ["MBZUAI-Paris/Atlas-Chat-2B", "TheBloke/llama2_7b_chat_uncensored-GPTQ", "unsloth/Llama-3.2-1B-Instruct-unsloth-bnb-4bit", "Qwen/Qwen3-VL-32B-Instruct-FP8"],
+      "expected_behavior": "Derive author/model_name from resource_id; normalize exact K/M/B parameter counts, config class suffixes, language codes, and arXiv IDs; retain GGUF/GGML file formats; resolve existing short dataset names only from unique explicit Hugging Face dataset links; reject unsupported safetensors booleans and generic AutoModel architectures.",
+      "safety_constraints": "Do not guess base_model IDs, do not use organization/model lookup tables, do not infer semantic values from repository names, and do not duplicate placeholder cleanup.",
+      "validation_criteria": "Identity derivation is deterministic; list-valued fields remain lists; safe format transformations are idempotent; unsupported safetensors/AutoModel values are removed; unrelated attributes remain unchanged.",
+      "allow_empty_output": false
+    },
+    {
+      "name": "attribute_evidence_guard",
+      "filename": "attribute_evidence_guard.py",
+      "stage": "postprocess_extraction",
+      "enabled": true,
+      "description": "Final sparse-output guard that centrally removes malformed, empty, null, unknown, N/A, not-specified and other comprehensive scoped placeholder values, unsupported-evidence attributes, and duplicates.",
+      "purpose": "Prevent hallucinated or structurally invalid attributes from surviving after normalization while avoiding semantic value mappings.",
+      "evidence_cases": ["cross-encoder/ms-marco-MiniLM-L6-v2", "HuggingFaceTB/SmolLM-135M-Instruct"],
+      "expected_behavior": "Use the complete generated PLACEHOLDER_VALUES set for values and evidence; require non-placeholder evidence except for input-derived model_id/model_name/author; keep one strongest entry per field.",
+      "safety_constraints": "Does not infer or rewrite semantic values; input-derived identity fields are allowed without README evidence.",
+      "validation_criteria": "Empty/unknown values and missing-evidence attributes are removed; valid attributes remain; duplicates collapse deterministically.",
+      "allow_empty_output": false
+    }
+  ],
+  "updated_at": "2026-07-19T03:20:00+00:00"
+}

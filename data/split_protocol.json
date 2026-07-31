@@ -1,0 +1,30 @@
+﻿{
+    "candidate_pool_file":  "data/splits/candidate_pool_15000.json",
+    "candidate_pool_size":  15000,
+    "validation":  {
+                       "start_index":  0,
+                       "end_index":  299,
+                       "size":  300,
+                       "id_file":  "data/splits/validation_ids.json",
+                       "cli_flag_name":  "test"
+                   },
+    "heldout_test":  {
+                         "start_index":  300,
+                         "end_index":  2299,
+                         "size":  2000,
+                         "id_file":  "data/splits/heldout_test_ids.json",
+                         "cli_flag_name":  "final-test"
+                     },
+    "evolution":  {
+                      "start_index":  2300,
+                      "batch_size":  300,
+                      "stride":  300,
+                      "pool_size":  12700,
+                      "id_file":  "data/splits/evolution_pool_ids.json",
+                      "generation_plan_file":  "data/splits/evolution_generation_ids.json",
+                      "generation_count":  18,
+                      "last_generation_end_index":  7699,
+                      "unused_pool_ids_after_generation_18":  7300,
+                      "rotation":  "Generation g uses candidate IDs from 2300 + (g-1)*300 through 2599 + (g-1)*300."
+                  }
+}
