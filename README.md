@@ -45,7 +45,7 @@ The published split protocol uses candidate IDs 0--299 for validation, 300--2,29
 
 The system extracts what model-card authors document; absent documentation is not evidence that a capability, risk, restriction, or provenance fact is absent. Structured records used as evolutionary feedback are incomplete weak references, not exhaustive ground truth. External LLM services can change over time, so exact generation-level results require the recorded model version and endpoint behavior.
 
-# EvoModelKG Knowledge Graph
+## EvoModelKG Knowledge Graph
 
 This directory provides anonymous access to the EvoModelKG knowledge graph
 artifact introduced in the accompanying manuscript:
@@ -58,7 +58,7 @@ metadata using an ontology spanning models, datasets, authors, tools, licences,
 and arXiv papers. It is further completed with schema-aligned facts extracted
 from the model cards available for 130,396 models.
 
-## Files
+### Files
 
 - `neo4j.dump`: Neo4j database dump of the EvoModelKG knowledge graph.
 - `nodes.csv`: exported graph nodes, including labels, identifiers, and node
