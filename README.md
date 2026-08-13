@@ -45,6 +45,34 @@ The published split protocol uses candidate IDs 0--299 for validation, 300--2,29
 
 The system extracts what model-card authors document; absent documentation is not evidence that a capability, risk, restriction, or provenance fact is absent. Structured records used as evolutionary feedback are incomplete weak references, not exhaustive ground truth. External LLM services can change over time, so exact generation-level results require the recorded model version and endpoint behavior.
 
+# EvoModelKG Knowledge Graph
+
+This directory provides anonymous access to the EvoModelKG knowledge graph
+artifact introduced in the accompanying manuscript:
+
+https://figshare.com/s/c2a26f3e5f5f71e99249
+
+EvoModelKG covers 172,549 Hugging Face models with more than 1,000 accumulated
+downloads as of the July 2026 snapshot. The graph is initialized from structured
+metadata using an ontology spanning models, datasets, authors, tools, licences,
+and arXiv papers. It is further completed with schema-aligned facts extracted
+from the model cards available for 130,396 models.
+
+## Files
+
+- `neo4j.dump`: Neo4j database dump of the EvoModelKG knowledge graph.
+- `nodes.csv`: exported graph nodes, including labels, identifiers, and node
+  properties.
+- `relationships.csv`: exported graph relationships, including endpoints,
+  relationship types, and relationship properties.
+
+These files correspond specifically to the EvoModelKG knowledge graph
+contribution.
+
+The files can be accessed through the anonymous link without signing in.
+A permanent public dataset record and DOI will be provided after completion
+of peer review.
+
 ## Citation
 
 If you use this code, please cite the associated EvoModelKG paper. A `CITATION.cff` file will be finalized when author, venue, and archival DOI metadata are available.
