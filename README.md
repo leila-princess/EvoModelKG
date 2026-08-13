@@ -29,7 +29,7 @@ python run_evolution.py --help
 
 The original full evaluation relied on a private Neo4j baseline and a point-in-time Hugging Face README collection. This release therefore provides split identifiers and derived, non-redistributable result snapshots. Recreating the full run requires obtaining the source records under their respective terms, then configuring `SELF_EVOLVE_README_DIR` and the baseline connection or cached baseline files.
 
-The rendered paper figures and their intermediate result snapshots are intentionally not stored in this repository.
+
 
 ## Repository layout
 
